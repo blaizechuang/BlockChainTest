@@ -33,12 +33,14 @@ public class Block {
 
     public void mineBlock(int difficulty) {
         String target = new String(new char[difficulty]).replace('\0', '0'); //创建一个用 difficulty * "0" 组成的字符串
-        System.out.println("hash: " + hash + ", target: " + target);
+        //System.out.println("hash: " + hash + ", target: " + target);
+        int times = 0;
         while(!hash.substring( 0, difficulty).equals(target)) {
-            System.out.println("hash: " + hash + ", target: " + target);
+            //System.out.println("hash: " + hash + ", target: " + target);
             nonce ++;
+            times++;
             hash = calculateHash();
         }
-        System.out.println("Block Mined!!! : " + hash);
+        System.out.println("Block Mined!!! : " + hash + ", times: " + times);
     }
 }
